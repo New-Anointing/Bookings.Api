@@ -1,0 +1,25 @@
+services:
+  bookings.api:
+    image: ${DOCKER_REGISTRY-}bookingsapi
+    build:
+      context: .
+      dockerfile: src/API/Bookings.Api/Dockerfile
+    ports:
+      - 5000:8080
+      - 5001:8081
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080;https://+:8081
+
+
+  bookings.database:
+    image: postgres:latest
+    container_name: Bookings.Database
+    environment:
+      - POSTGRES_DB=bookings
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - ./.containers/db:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
