@@ -1,10 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
     <PackageReference Include="Dapper" Version="2.1.66" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="12.0.0" />
+    <PackageReference Include="MediatR" Version="13.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Shared\Abstractions\Bookings.Shared.Abstractions\Bookings.Shared.Abstractions.csproj" />
     <ProjectReference Include="..\Bookings.Modules.Events.Domain\Bookings.Modules.Events.Domain.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Events\PublishEvent\" />
   </ItemGroup>
 
 </Project>

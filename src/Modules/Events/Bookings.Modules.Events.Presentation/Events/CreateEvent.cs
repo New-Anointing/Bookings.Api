@@ -1,4 +1,4 @@
-﻿using Bookings.Modules.Events.Application.Events;
+﻿using Bookings.Modules.Events.Application.Events.CreateEvent;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
@@ -13,6 +13,7 @@ internal static partial class CreateEvent
         {
             var command = new CreateEventCommand(
                 request.Title,
+                request.CategoryId,
                 request.Description,
                 request.Location,
                 request.StartsAtUtc,
@@ -28,6 +29,8 @@ internal static partial class CreateEvent
     internal sealed class Request
     {
         public string Title { get; set; }
+
+        public Guid CategoryId { get; set; }
 
         public string Description { get; set; }
 

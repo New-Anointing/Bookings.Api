@@ -3,5 +3,5 @@
 namespace Bookings.Modules.Events.Application.Abstractions.Data;
 public interface IDbConnectionFactory
 {
-    ValueTask<DbConnection> OpenConnectionAssync();
+    ValueTask<DbConnection> OpenConnectionAsync();
 }

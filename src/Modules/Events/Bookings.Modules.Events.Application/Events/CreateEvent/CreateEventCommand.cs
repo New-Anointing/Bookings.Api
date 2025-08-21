@@ -1,7 +1,7 @@
-﻿using Bookings.Shared.Abstractions.CQRS;
+﻿using Bookings.Modules.Events.Application.Abstractions.Messaging;
 
 namespace Bookings.Modules.Events.Application.Events.CreateEvent;
 
 public sealed record CreateEventCommand
-    (string Title, string Description, string Location, DateTime StartsAtUtc, DateTime? EndsAtUtc) 
+    (string Title, Guid CategoryId, string Description, string Location, DateTime StartsAtUtc, DateTime? EndsAtUtc) 
     : ICommand<Guid>;

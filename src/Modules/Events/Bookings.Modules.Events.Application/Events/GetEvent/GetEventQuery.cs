@@ -1,4 +1,4 @@
-﻿using Bookings.Shared.Abstractions.CQRS;
+﻿using Bookings.Modules.Events.Application.Abstractions.Messaging;
 
 namespace Bookings.Modules.Events.Application.Events.GetEvent;
 

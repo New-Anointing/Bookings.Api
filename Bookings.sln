@@ -29,12 +29,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookings.Modules.Events.Inf
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookings.Modules.Events.Presentation", "src\Modules\Events\Bookings.Modules.Events.Presentation\Bookings.Modules.Events.Presentation.csproj", "{A1AA642F-77D5-42BA-BC4A-30A6147253F5}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{5C8BBDF1-B750-4A01-98E0-D8C2D95C0EFE}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Abstractions", "Abstractions", "{1372D431-3560-49D3-8F8A-4209F663D752}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookings.Shared.Abstractions", "src\Shared\Abstractions\Bookings.Shared.Abstractions\Bookings.Shared.Abstractions.csproj", "{29E3D0FB-9608-4353-AAB0-CE883E7FD983}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -65,10 +59,6 @@ Global
 		{A1AA642F-77D5-42BA-BC4A-30A6147253F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1AA642F-77D5-42BA-BC4A-30A6147253F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1AA642F-77D5-42BA-BC4A-30A6147253F5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{29E3D0FB-9608-4353-AAB0-CE883E7FD983}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{29E3D0FB-9608-4353-AAB0-CE883E7FD983}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{29E3D0FB-9608-4353-AAB0-CE883E7FD983}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{29E3D0FB-9608-4353-AAB0-CE883E7FD983}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -82,9 +72,6 @@ Global
 		{357FFDA3-21C6-48B0-8588-EED73A20C2E2} = {E647F9FF-EFC1-4C7F-8571-CCE5EF272223}
 		{8BE1B682-78EF-41A0-A293-D512D16AFC53} = {E647F9FF-EFC1-4C7F-8571-CCE5EF272223}
 		{A1AA642F-77D5-42BA-BC4A-30A6147253F5} = {E647F9FF-EFC1-4C7F-8571-CCE5EF272223}
-		{5C8BBDF1-B750-4A01-98E0-D8C2D95C0EFE} = {D9FE9FF2-CB9A-4C02-B049-AD57CBD9A801}
-		{1372D431-3560-49D3-8F8A-4209F663D752} = {5C8BBDF1-B750-4A01-98E0-D8C2D95C0EFE}
-		{29E3D0FB-9608-4353-AAB0-CE883E7FD983} = {1372D431-3560-49D3-8F8A-4209F663D752}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {04D72791-CE56-47E6-80B5-D02DA43AD10E}

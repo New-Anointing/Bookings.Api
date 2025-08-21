@@ -1,5 +1,4 @@
 using Bookings.Api.Extensions;
-using Bookings.Modules.Events.Api;
 using Bookings.Modules.Events.Infrastructure;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);

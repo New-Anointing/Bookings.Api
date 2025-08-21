@@ -10,7 +10,7 @@ using Npgsql;
 namespace Bookings.Modules.Events.Infrastructure.Data;
 internal sealed class DbContextFactory(NpgsqlDataSource dataSource) : IDbConnectionFactory
 {
-    public async ValueTask<DbConnection> OpenConnectionAssync()
+    public async ValueTask<DbConnection> OpenConnectionAsync()
     {
         return await dataSource.OpenConnectionAsync();
     }
