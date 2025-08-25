@@ -8,8 +8,13 @@ using Bookings.Modules.Events.Infrastructure.Database;
 using Microsoft.EntityFrameworkCore;
 
 namespace Bookings.Modules.Events.Infrastructure.TicketTypes;
-public class TicketTypeRepository(EventsDbContext context) : ITicketTypeRepository
+internal sealed class TicketTypeRepository(EventsDbContext context) : ITicketTypeRepository
 {
+    public async Task<bool> ExistAsync(Guid eventId, CancellationToken cancellationToken)
+    {
+        return await context.TicketTypes.AnyAsync(c => c.EventId == eventId, cancellationToken);
+    }
+
     public Task<TicketType?> GetAsync(Guid id, CancellationToken cancellationToken)
     {
         return context.TicketTypes.Where(c => c.Id == id).SingleOrDefaultAsync(cancellationToken);
