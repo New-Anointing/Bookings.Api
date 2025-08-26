@@ -1,8 +1,10 @@
-﻿using Bookings.Modules.Events.Application.Abstractions.Data;
+﻿using Bookings.Modules.Events.Application.Abstractions.Clock;
+using Bookings.Modules.Events.Application.Abstractions.Data;
 using Bookings.Modules.Events.Domain.Categories;
 using Bookings.Modules.Events.Domain.Events;
 using Bookings.Modules.Events.Domain.TicketTypes;
 using Bookings.Modules.Events.Infrastructure.Categories;
+using Bookings.Modules.Events.Infrastructure.Clock;
 using Bookings.Modules.Events.Infrastructure.Database;
 using Bookings.Modules.Events.Infrastructure.Events;
 using Bookings.Modules.Events.Infrastructure.TicketTypes;
@@ -46,6 +48,8 @@ public static class EventsModules
         services.TryAddSingleton(npgsqlDataSource);
 
         services.AddScoped<IDbConnectionFactory, IDbConnectionFactory>();
+
+        services.TryAddSingleton<IDateTimeProvider, DateTimeProvider>();
 
         services.AddDbContext<EventsDbContext>(options =>
         {

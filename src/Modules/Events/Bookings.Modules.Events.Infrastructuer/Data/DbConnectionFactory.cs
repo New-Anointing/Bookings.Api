@@ -8,7 +8,7 @@ using Bookings.Modules.Events.Application.Abstractions.Data;
 using Npgsql;
 
 namespace Bookings.Modules.Events.Infrastructure.Data;
-internal sealed class DbContextFactory(NpgsqlDataSource dataSource) : IDbConnectionFactory
+internal sealed class DbConnectionFactory(NpgsqlDataSource dataSource) : IDbConnectionFactory
 {
     public async ValueTask<DbConnection> OpenConnectionAsync()
     {

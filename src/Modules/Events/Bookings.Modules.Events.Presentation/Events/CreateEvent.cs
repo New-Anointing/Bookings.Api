@@ -1,4 +1,6 @@
 ﻿using Bookings.Modules.Events.Application.Events.CreateEvent;
+using Bookings.Modules.Events.Domain.Abstractions;
+using Bookings.Modules.Events.Presentation.ApiResults;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
@@ -7,7 +9,7 @@ using Microsoft.AspNetCore.Routing;
 namespace Bookings.Modules.Events.Presentation.Events;
 internal static partial class CreateEvent
 {
-    public static void MapEndPoint(IEndpointRouteBuilder app)
+    public static void MapEndpoint(IEndpointRouteBuilder app)
     {
         app.MapPost("/events", async (Request request, ISender sender) =>
         {
@@ -19,9 +21,9 @@ internal static partial class CreateEvent
                 request.StartsAtUtc,
                 request.EndsAtUtc);
 
-            Guid eventId = await sender.Send(command);
+            Result<Guid> result = await sender.Send(command);
 
-            return Results.Ok(eventId);
+            return result.Match(Results.Ok, ApiResults.ApiResults.Problem);
         })
             .WithTags(Tags.Events);
     }

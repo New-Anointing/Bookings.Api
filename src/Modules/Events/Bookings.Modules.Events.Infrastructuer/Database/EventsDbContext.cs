@@ -2,6 +2,8 @@
 using Bookings.Modules.Events.Domain.Categories;
 using Bookings.Modules.Events.Domain.Events;
 using Bookings.Modules.Events.Domain.TicketTypes;
+using Bookings.Modules.Events.Infrastructure.Events;
+using Bookings.Modules.Events.Infrastructure.TicketTypes;
 using Microsoft.EntityFrameworkCore;
 
 namespace Bookings.Modules.Events.Infrastructure.Database;
@@ -16,6 +18,9 @@ public sealed class EventsDbContext(DbContextOptions<EventsDbContext> options)
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.HasDefaultSchema(Schema.Events);
+
+        modelBuilder.ApplyConfiguration(new EventConfiguration());
+        modelBuilder.ApplyConfiguration(new TicketTypeConfiguration());
     }
 }
 

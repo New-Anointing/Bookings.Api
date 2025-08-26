@@ -1,4 +1,4 @@
-﻿using Bookings.Modules.Events.Application.Events.GetEvent;
+﻿using Bookings.Modules.Events.Application.Events.PublishEvent;
 using Bookings.Modules.Events.Domain.Abstractions;
 using Bookings.Modules.Events.Presentation.ApiResults;
 using MediatR;
@@ -7,16 +7,15 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 
 namespace Bookings.Modules.Events.Presentation.Events;
-
-internal static class GetEvent
+internal static class PublishEvent
 {
     public static void MapEndpoint(IEndpointRouteBuilder app)
     {
-        app.MapGet("/events/{id:guid}", async (Guid id, ISender sender) =>
+        app.MapPut("events/{id}/publish", async (Guid id, ISender sender) =>
         {
-            Result<EventResponse> result = await sender.Send(new GetEventQuery(id));
+            Result result = await sender.Send(new PublishEventCommand(id));
 
-            return result.Match(Results.Ok, ApiResults.ApiResults.Problem);
+            return result.Match(Results.NoContent, ApiResults.ApiResults.Problem);
         })
         .WithTags(Tags.Events);
     }
