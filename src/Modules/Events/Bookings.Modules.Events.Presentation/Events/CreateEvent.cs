@@ -23,9 +23,9 @@ internal static partial class CreateEvent
 
             Result<Guid> result = await sender.Send(command);
 
-            return result.Match(Results.Ok, ApiResults.ApiResults.Problem);
+            return result.Match(Results.Created, ApiResults.ApiResults.Problem);
         })
-            .WithTags(Tags.Events);
+        .WithTags(Tags.Events);
     }
 
     internal sealed class Request
