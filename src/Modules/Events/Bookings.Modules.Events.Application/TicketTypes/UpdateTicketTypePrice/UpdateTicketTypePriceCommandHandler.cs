@@ -5,7 +5,7 @@ using Bookings.Modules.Events.Domain.TicketTypes;
 
 namespace Bookings.Modules.Events.Application.TicketTypes.UpdateTicketTypePrice;
 
-internal class UpdateTicketTypePriceCommandHandler(
+internal sealed class UpdateTicketTypePriceCommandHandler(
     IUnitOfWork unitOfWork,
     ITicketTypeRepository ticketTypeRepository)
     : ICommandHandler<UpdateTicketTypePriceCommand>

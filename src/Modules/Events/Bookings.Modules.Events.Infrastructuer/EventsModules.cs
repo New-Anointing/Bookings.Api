@@ -5,10 +5,13 @@ using Bookings.Modules.Events.Domain.Events;
 using Bookings.Modules.Events.Domain.TicketTypes;
 using Bookings.Modules.Events.Infrastructure.Categories;
 using Bookings.Modules.Events.Infrastructure.Clock;
+using Bookings.Modules.Events.Infrastructure.Data;
 using Bookings.Modules.Events.Infrastructure.Database;
 using Bookings.Modules.Events.Infrastructure.Events;
 using Bookings.Modules.Events.Infrastructure.TicketTypes;
+using Bookings.Modules.Events.Presentation.Categories;
 using Bookings.Modules.Events.Presentation.Events;
+using Bookings.Modules.Events.Presentation.TicketTypes;
 using FluentValidation;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
@@ -24,6 +27,8 @@ public static class EventsModules
     public static void MapEndpoints(IEndpointRouteBuilder app)
     {
         EventEndpoints.MapEndpoints(app);
+        TicketTypeEndpoints.MapEndpoints(app);
+        CategoryEndpoints.MapEndpoints(app);
     }
 
     public static IServiceCollection AddEventsModules(this IServiceCollection services, IConfiguration configuration)
@@ -47,7 +52,7 @@ public static class EventsModules
         NpgsqlDataSource npgsqlDataSource = new NpgsqlDataSourceBuilder(databaseConnectionString).Build();
         services.TryAddSingleton(npgsqlDataSource);
 
-        services.AddScoped<IDbConnectionFactory, IDbConnectionFactory>();
+        services.AddScoped<IDbConnectionFactory, DbConnectionFactory>();
 
         services.TryAddSingleton<IDateTimeProvider, DateTimeProvider>();
 

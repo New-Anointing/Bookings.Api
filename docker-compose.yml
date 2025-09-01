@@ -14,7 +14,7 @@ services:
 
   bookings.database:
     image: postgres:latest
-    container_name: Bookings.Database
+    container_name: bookings.database
     environment:
       - POSTGRES_DB=bookings
       - POSTGRES_USER=postgres

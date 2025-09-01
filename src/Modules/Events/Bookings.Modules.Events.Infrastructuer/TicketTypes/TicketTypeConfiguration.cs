@@ -1,4 +1,5 @@
-﻿using Bookings.Modules.Events.Domain.TicketTypes;
+﻿using Bookings.Modules.Events.Domain.Events;
+using Bookings.Modules.Events.Domain.TicketTypes;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -7,6 +8,6 @@ internal sealed class TicketTypeConfiguration : IEntityTypeConfiguration<TicketT
 {
     public void Configure(EntityTypeBuilder<TicketType> builder)
     {
-        builder.HasOne<TicketType>().WithMany().HasForeignKey(t => t.EventId);
+        builder.HasOne<Event>().WithMany().HasForeignKey(t => t.EventId);
     }
 }
