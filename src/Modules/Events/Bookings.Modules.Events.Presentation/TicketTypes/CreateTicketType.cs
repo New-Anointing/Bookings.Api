@@ -20,7 +20,7 @@ internal static class CreateTicketType
                 request.Currency,
                 request.Quantity
                 ));
-            return result.Match(Results.Created, ApiResults.ApiResults.Problem);
+            return result.Match(Results.Ok, ApiResults.ApiResults.Problem);
         })
         .WithTags(Tags.TicketTypes);
     }

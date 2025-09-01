@@ -15,7 +15,7 @@ internal static class ArchiveCategory
         {
             Result result = await sender.Send(new ArchiveCategoryCommand(id));
 
-            result.Match(Results.NoContent, ApiResults.ApiResults.Problem);
+            result.Match(() => Results.Ok(), ApiResults.ApiResults.Problem);
         })
         .WithTags(Tags.Categories);
     }

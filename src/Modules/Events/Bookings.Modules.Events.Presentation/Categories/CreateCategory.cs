@@ -15,7 +15,7 @@ internal static class CreateCategory
         {
             Result<Guid> result = await sender.Send(new CreateCategoryCommand(request.Name));
 
-            return result.Match(Results.Created, ApiResults.ApiResults.Problem);
+            return result.Match(Results.Ok, ApiResults.ApiResults.Problem);
         })
         .WithTags(Tags.Categories);
     }
