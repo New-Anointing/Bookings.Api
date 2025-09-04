@@ -1,15 +1,16 @@
-﻿using Bookings.Modules.Events.Application.Events.CreateEvent;
-using Bookings.Modules.Events.Domain.Abstractions;
-using Bookings.Modules.Events.Presentation.ApiResults;
+﻿using Bookings.Common.Domain;
+using Bookings.Common.Presentation.ApiResults;
+using Bookings.Common.Presentation.Endpoints;
+using Bookings.Modules.Events.Application.Events.CreateEvent;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 
 namespace Bookings.Modules.Events.Presentation.Events;
-internal static partial class CreateEvent
+internal sealed class CreateEvent : IEndpoint
 {
-    public static void MapEndpoint(IEndpointRouteBuilder app)
+    public void MapEndpoint(IEndpointRouteBuilder app)
     {
         app.MapPost("/events", async (Request request, ISender sender) =>
         {
@@ -23,7 +24,7 @@ internal static partial class CreateEvent
 
             Result<Guid> result = await sender.Send(command);
 
-            return result.Match(Results.Ok, ApiResults.ApiResults.Problem);
+            return result.Match(Results.Ok, ApiResults.Problem);
         })
         .WithTags(Tags.Events);
     }

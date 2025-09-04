@@ -1,8 +1,8 @@
 ﻿using System.Data.Common;
-using Bookings.Modules.Events.Application.Abstractions.Data;
-using Bookings.Modules.Events.Application.Abstractions.Messaging;
+using Bookings.Common.Application.Data;
+using Bookings.Common.Application.Messaging;
+using Bookings.Common.Domain;
 using Bookings.Modules.Events.Application.Events.GetEvents;
-using Bookings.Modules.Events.Domain.Abstractions;
 using Bookings.Modules.Events.Domain.Events;
 using Dapper;
 
@@ -36,7 +36,7 @@ internal sealed class SearchEventsQueryHandler(IDbConnectionFactory dbConnection
         GetEventsAsync(DbConnection connection, SearchEventsParameters parameters)
     {
         const string sql =
-            $"""
+           $"""
              SELECT
                  id AS {nameof(EventResponse.Id)},
                  category_id AS {nameof(EventResponse.CategoryId)},

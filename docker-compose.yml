@@ -23,3 +23,20 @@ services:
       - ./.containers/db:/var/lib/postgresql/data
     ports:
       - 5432:5432
+
+  bookings.seq:
+    image: datalust/seq:latest
+    container_name: Bookings.Seq
+    environment:
+      - ACCEPT_EULA=Y
+      - SEQ_FIRSTRUN_ADMINUSERNAME=admin 
+      - SEQ_FIRSTRUN_ADMINPASSWORD=password  
+    ports:
+      - 5341:5341
+      - 8081:80
+  bookings.redis:
+    image: redis:latest
+    container_name: Bookings.Redis
+    restart: always
+    ports:
+        - 6379:6379

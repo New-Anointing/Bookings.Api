@@ -1,8 +1,8 @@
 ﻿using System.Data.Common;
-using Bookings.Modules.Events.Application.Abstractions.Data;
-using Bookings.Modules.Events.Application.Abstractions.Messaging;
+using Bookings.Common.Application.Data;
+using Bookings.Common.Application.Messaging;
+using Bookings.Common.Domain;
 using Bookings.Modules.Events.Application.Categories.GetCategory;
-using Bookings.Modules.Events.Domain.Abstractions;
 using Dapper;
 
 namespace Bookings.Modules.Events.Application.Categories.GetCategories;

@@ -1,7 +1,7 @@
-﻿using Bookings.Modules.Events.Application.Abstractions.Clock;
+﻿using Bookings.Common.Application.Clock;
+using Bookings.Common.Application.Messaging;
+using Bookings.Common.Domain;
 using Bookings.Modules.Events.Application.Abstractions.Data;
-using Bookings.Modules.Events.Application.Abstractions.Messaging;
-using Bookings.Modules.Events.Domain.Abstractions;
 using Bookings.Modules.Events.Domain.Events;
 using MediatR;
 

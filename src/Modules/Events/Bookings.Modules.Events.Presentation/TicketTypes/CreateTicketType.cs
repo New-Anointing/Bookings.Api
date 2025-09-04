@@ -1,15 +1,16 @@
-﻿using Bookings.Modules.Events.Application.TicketTypes.CreateTicketType;
-using Bookings.Modules.Events.Domain.Abstractions;
-using Bookings.Modules.Events.Presentation.ApiResults;
+﻿using Bookings.Common.Domain;
+using Bookings.Common.Presentation.ApiResults;
+using Bookings.Common.Presentation.Endpoints;
+using Bookings.Modules.Events.Application.TicketTypes.CreateTicketType;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 
 namespace Bookings.Modules.Events.Presentation.TicketTypes;
-internal static class CreateTicketType
+internal sealed class CreateTicketType : IEndpoint
 {
-    public static void MapEndpoint(IEndpointRouteBuilder app)
+    public void MapEndpoint(IEndpointRouteBuilder app)
     {
         app.MapPost("ticket-types", async (Request request, ISender sender) =>
         {
@@ -20,7 +21,7 @@ internal static class CreateTicketType
                 request.Currency,
                 request.Quantity
                 ));
-            return result.Match(Results.Ok, ApiResults.ApiResults.Problem);
+            return result.Match(Results.Ok, ApiResults.Problem);
         })
         .WithTags(Tags.TicketTypes);
     }

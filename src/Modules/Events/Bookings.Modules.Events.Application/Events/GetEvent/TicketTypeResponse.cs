@@ -2,7 +2,6 @@
 
 public sealed record TicketTypeResponse(
     Guid TicketTypeId,
-    Guid EventId,
     string Name,
     decimal Price,
     string Currency,

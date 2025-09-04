@@ -1,6 +1,7 @@
-﻿using Bookings.Modules.Events.Application.Events.GetEvent;
-using Bookings.Modules.Events.Domain.Abstractions;
-using Bookings.Modules.Events.Presentation.ApiResults;
+﻿using Bookings.Common.Domain;
+using Bookings.Common.Presentation.ApiResults;
+using Bookings.Common.Presentation.Endpoints;
+using Bookings.Modules.Events.Application.Events.GetEvent;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
@@ -8,15 +9,15 @@ using Microsoft.AspNetCore.Routing;
 
 namespace Bookings.Modules.Events.Presentation.Events;
 
-internal static class GetEvent
+internal sealed class GetEvent : IEndpoint
 {
-    public static void MapEndpoint(IEndpointRouteBuilder app)
+    public void MapEndpoint(IEndpointRouteBuilder app)
     {
         app.MapGet("/events/{id:guid}", async (Guid id, ISender sender) =>
         {
             Result<EventResponse> result = await sender.Send(new GetEventQuery(id));
 
-            return result.Match(Results.Ok, ApiResults.ApiResults.Problem);
+            return result.Match(Results.Ok, ApiResults.Problem);
         })
         .WithTags(Tags.Events);
     }

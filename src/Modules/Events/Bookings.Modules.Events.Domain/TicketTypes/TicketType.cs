@@ -1,4 +1,4 @@
-﻿using Bookings.Modules.Events.Domain.Abstractions;
+﻿using Bookings.Common.Domain;
 using Bookings.Modules.Events.Domain.Events;
 
 namespace Bookings.Modules.Events.Domain.TicketTypes;
@@ -28,7 +28,8 @@ public sealed class TicketType : Entity
     {
         var ticketType = new TicketType
         {
-            Id = @event.Id,
+            Id = Guid.NewGuid(),
+            EventId = @event.Id,
             Name = name,
             Price = price,
             Currency = currency,

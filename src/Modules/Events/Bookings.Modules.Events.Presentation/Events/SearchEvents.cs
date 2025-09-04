@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Bookings.Common.Domain;
+using Bookings.Common.Presentation.ApiResults;
+using Bookings.Common.Presentation.Endpoints;
 using Bookings.Modules.Events.Application.Events.SearchEvents;
-using Bookings.Modules.Events.Domain.Abstractions;
-using Bookings.Modules.Events.Presentation.ApiResults;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 
 namespace Bookings.Modules.Events.Presentation.Events;
-internal static class SearchEvents
+internal sealed class SearchEvents : IEndpoint
 {
-    public static void MapEndpoint (IEndpointRouteBuilder app)
+    public void MapEndpoint (IEndpointRouteBuilder app)
     {
         app.MapGet("events/search", async (
             ISender sender,
@@ -31,7 +32,7 @@ internal static class SearchEvents
                 page,
                 pageSize));
 
-            return result.Match(Results.Ok, ApiResults.ApiResults.Problem);
+            return result.Match(Results.Ok, ApiResults.Problem);
 
         })
         .WithTags(Tags.Events);

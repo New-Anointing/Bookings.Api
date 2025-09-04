@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Bookings.Common.Application.Messaging;
+using Bookings.Common.Domain;
 using Bookings.Modules.Events.Application.Abstractions.Data;
-using Bookings.Modules.Events.Application.Abstractions.Messaging;
-using Bookings.Modules.Events.Domain.Abstractions;
 using Bookings.Modules.Events.Domain.Categories;
 
 namespace Bookings.Modules.Events.Application.Categories.ArchiveCategory;

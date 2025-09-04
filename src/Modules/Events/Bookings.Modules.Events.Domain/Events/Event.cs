@@ -1,4 +1,4 @@
-﻿using Bookings.Modules.Events.Domain.Abstractions;
+﻿using Bookings.Common.Domain;
 using Bookings.Modules.Events.Domain.Categories;
 
 namespace Bookings.Modules.Events.Domain.Events;

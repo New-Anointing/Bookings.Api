@@ -1,11 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-	<ItemGroup>
-		<PackageReference Include="EFCore.NamingConventions" Version="9.0.0" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.8" />
-		<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />
-	</ItemGroup>
 
 	<ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Bookings.Common.Infrastructure\Bookings.Common.Infrastructure.csproj" />
     <ProjectReference Include="..\Bookings.Modules.Events.Application\Bookings.Modules.Events.Application.csproj" />
     <ProjectReference Include="..\Bookings.Modules.Events.Presentation\Bookings.Modules.Events.Presentation.csproj" />
   </ItemGroup>

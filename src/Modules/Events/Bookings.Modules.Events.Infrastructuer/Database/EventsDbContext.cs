@@ -1,4 +1,5 @@
-﻿using Bookings.Modules.Events.Application.Abstractions.Data;
+﻿using Bookings.Common.Application.Data;
+using Bookings.Modules.Events.Application.Abstractions.Data;
 using Bookings.Modules.Events.Domain.Categories;
 using Bookings.Modules.Events.Domain.Events;
 using Bookings.Modules.Events.Domain.TicketTypes;

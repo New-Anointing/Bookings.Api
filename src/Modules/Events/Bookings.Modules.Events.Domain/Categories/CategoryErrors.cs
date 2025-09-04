@@ -1,6 +1,6 @@
 ﻿
 
-using Bookings.Modules.Events.Domain.Abstractions;
+using Bookings.Common.Domain;
 
 namespace Bookings.Modules.Events.Domain.Categories;
 public static class CategoryErrors
