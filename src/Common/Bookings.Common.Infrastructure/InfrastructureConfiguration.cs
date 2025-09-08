@@ -4,6 +4,7 @@ using Bookings.Common.Application.Data;
 using Bookings.Common.Infrastructure.Caching;
 using Bookings.Common.Infrastructure.Clock;
 using Bookings.Common.Infrastructure.Data;
+using Bookings.Common.Infrastructure.Interceptors;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Npgsql;
@@ -35,6 +36,7 @@ public static class InfrastructureConfiguration
         });
 
         services.TryAddSingleton<ICacheService, CacheService>();
+        services.TryAddSingleton<PublishDomainEventsInterceptor>();
 
         return services;
     }

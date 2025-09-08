@@ -1,7 +1,7 @@
 ﻿using Bookings.Common.Domain;
 
 namespace Bookings.Modules.Events.Domain.Categories;
-public sealed partial class Category : Entity
+public sealed class Category : Entity
 {
     private Category() 
     {

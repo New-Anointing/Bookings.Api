@@ -1,4 +1,5 @@
-﻿using Bookings.Common.Presentation.Endpoints;
+﻿using Bookings.Common.Infrastructure.Interceptors;
+using Bookings.Common.Presentation.Endpoints;
 using Bookings.Modules.Events.Application.Abstractions.Data;
 using Bookings.Modules.Events.Domain.Categories;
 using Bookings.Modules.Events.Domain.Events;
@@ -7,10 +8,6 @@ using Bookings.Modules.Events.Infrastructure.Categories;
 using Bookings.Modules.Events.Infrastructure.Database;
 using Bookings.Modules.Events.Infrastructure.Events;
 using Bookings.Modules.Events.Infrastructure.TicketTypes;
-using Bookings.Modules.Events.Presentation.Categories;
-using Bookings.Modules.Events.Presentation.Events;
-using Bookings.Modules.Events.Presentation.TicketTypes;
-using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.Extensions.Configuration;
@@ -33,13 +30,13 @@ public static class EventsModules
     {
         string databaseConnectionString = configuration.GetConnectionString("EventsDatabase");
 
-        services.AddDbContext<EventsDbContext>(options =>
+        services.AddDbContext<EventsDbContext>((sp, options) =>
         {
             options.UseNpgsql(databaseConnectionString,
                 npgsqlOptions => npgsqlOptions
                 .MigrationsHistoryTable(HistoryRepository.DefaultTableName, Schema.Events))
             .UseSnakeCaseNamingConvention()
-            .AddInterceptors();
+            .AddInterceptors(sp.GetRequiredService<PublishDomainEventsInterceptor>());
         });
 
         services.AddScoped<IUnitOfWork>(sp => sp.GetRequiredService<EventsDbContext>());

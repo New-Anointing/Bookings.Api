@@ -3,7 +3,7 @@ using Bookings.Modules.Events.Domain.Categories;
 
 namespace Bookings.Modules.Events.Domain.Events;
 
-public sealed partial class Event : Entity
+public sealed class Event : Entity
 {
     private Event() { 
     }

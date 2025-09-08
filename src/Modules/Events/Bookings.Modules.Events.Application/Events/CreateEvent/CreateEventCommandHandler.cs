@@ -8,7 +8,7 @@ using Bookings.Modules.Events.Domain.Events;
 
 namespace Bookings.Modules.Events.Application.Events.CreateEvent;
 
-internal sealed partial class CreateEventCommandHandler
+internal sealed class CreateEventCommandHandler
     (IEventRepository eventRepository,
     ICategoryRepository categoryRepository,
     IDateTimeProvider dateTimeProvider,

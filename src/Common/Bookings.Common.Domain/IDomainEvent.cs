@@ -1,6 +1,8 @@
-﻿namespace Bookings.Common.Domain;
+﻿using MediatR;
 
-public interface IDomainEvent
+namespace Bookings.Common.Domain;
+
+public interface IDomainEvent : INotification
 {
     Guid Id { get; }
     DateTime OccuredOnUtc { get; }
