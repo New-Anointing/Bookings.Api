@@ -5,6 +5,7 @@ using Bookings.Common.Application;
 using Bookings.Common.Infrastructure;
 using Bookings.Common.Presentation.Endpoints;
 using Bookings.Modules.Events.Infrastructure;
+using Bookings.Modules.Users.Infrastucture;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Serilog;
@@ -14,9 +15,8 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 
-Assembly[] Assemblies = [Bookings.Modules.Events.Application.AssemblyRefrence.Assembly];
 
-string dataBaseConnectionString = builder.Configuration.GetConnectionString("EventsDatabase")!;
+string dataBaseConnectionString = builder.Configuration.GetConnectionString("Database")!;
 string redisCacheConnectionString = builder.Configuration.GetConnectionString("Cache")!;
 
 builder.Host.UseSerilog((context, LoggerConfiguration) => LoggerConfiguration.ReadFrom.Configuration(context.Configuration));
@@ -26,17 +26,21 @@ builder.Services.AddProblemDetails();
 
 builder.Services.AddOpenApi();
 
+Assembly[] Assemblies = [Bookings.Modules.Events.Application.AssemblyRefrence.Assembly, Bookings.Modules.Users.Application.AssemblyRefrence.Assembly];
+
 builder.Services.AddApplication(Assemblies);
 
 builder.Services.AddInfrastructure(dataBaseConnectionString, redisCacheConnectionString);
 
-builder.Configuration.AddModuleConfiguration(["events"]);
+builder.Configuration.AddModuleConfiguration(["events", "users"]);
 
 builder.Services.AddHealthChecks()
     .AddNpgSql(dataBaseConnectionString)
     .AddRedis(redisCacheConnectionString);
 
-builder.Services.AddEventsModules(builder.Configuration);
+builder.Services.AddEventsModule(builder.Configuration);
+builder.Services.AddUsersModule(builder.Configuration);
+
 
 WebApplication app = builder.Build();
 

@@ -14,10 +14,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Bookings.Modules.Events.Infrastructure;
-public static class EventsModules
+public static class EventsModule
 {
 
-    public static IServiceCollection AddEventsModules(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddEventsModule(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddInfrastructure(configuration);
 
@@ -28,7 +28,7 @@ public static class EventsModules
 
     private static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
-        string databaseConnectionString = configuration.GetConnectionString("EventsDatabase");
+        string databaseConnectionString = configuration.GetConnectionString("Database");
 
         services.AddDbContext<EventsDbContext>((sp, options) =>
         {
