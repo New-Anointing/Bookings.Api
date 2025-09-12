@@ -5,6 +5,7 @@ using Bookings.Common.Application;
 using Bookings.Common.Infrastructure;
 using Bookings.Common.Presentation.Endpoints;
 using Bookings.Modules.Events.Infrastructure;
+using Bookings.Modules.Ticketing.Infrastructure;
 using Bookings.Modules.Users.Infrastucture;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
@@ -26,7 +27,9 @@ builder.Services.AddProblemDetails();
 
 builder.Services.AddOpenApi();
 
-Assembly[] Assemblies = [Bookings.Modules.Events.Application.AssemblyRefrence.Assembly, Bookings.Modules.Users.Application.AssemblyRefrence.Assembly];
+Assembly[] Assemblies = [Bookings.Modules.Events.Application.AssemblyRefrence.Assembly,
+                        Bookings.Modules.Users.Application.AssemblyRefrence.Assembly,
+                        Bookings.Modules.Ticketing.Application.AssemblyRefrence.Assembly];
 
 builder.Services.AddApplication(Assemblies);
 
@@ -40,6 +43,7 @@ builder.Services.AddHealthChecks()
 
 builder.Services.AddEventsModule(builder.Configuration);
 builder.Services.AddUsersModule(builder.Configuration);
+builder.Services.AddTicketingModule(builder.Configuration);
 
 
 WebApplication app = builder.Build();

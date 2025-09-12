@@ -25,6 +25,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Modules\Events\Bookings.Modules.Events.Infrastructuer\Bookings.Modules.Events.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\Modules\Ticketing\Bookings.Modules.Ticketing.Infrastructure\Bookings.Modules.Ticketing.Infrastructure.csproj" />
     <ProjectReference Include="..\..\Modules\Users\Bookings.Modules.Users.Infrastucture\Bookings.Modules.Users.Infrastucture.csproj" />
   </ItemGroup>
 
