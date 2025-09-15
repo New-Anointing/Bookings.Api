@@ -1,6 +1,7 @@
 ﻿using Bookings.Common.Domain;
 
 namespace Bookings.Modules.Events.Domain.TicketTypes;
+
 public static class TicketTypeErrors
 {
     public static Error NotFound(Guid ticketTypeId) =>

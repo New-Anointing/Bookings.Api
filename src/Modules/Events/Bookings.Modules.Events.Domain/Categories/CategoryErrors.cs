@@ -3,6 +3,7 @@
 using Bookings.Common.Domain;
 
 namespace Bookings.Modules.Events.Domain.Categories;
+
 public static class CategoryErrors
 {
     public static Error NotFound(Guid categoryId) =>

@@ -2,4 +2,4 @@
 
 namespace Bookings.Modules.Events.Application.Categories.CreateCategory;
 
-public sealed record CreateCategoryCommand(string Name): ICommand<Guid>;
+public sealed record CreateCategoryCommand(string Name) : ICommand<Guid>;

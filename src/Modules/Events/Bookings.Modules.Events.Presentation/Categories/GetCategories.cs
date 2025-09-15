@@ -10,16 +10,17 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 
 namespace Bookings.Modules.Events.Presentation.Categories;
+
 internal sealed class GetCategories : IEndpoint
 {
     public void MapEndpoint(IEndpointRouteBuilder app)
     {
-        app.MapGet("categories", async(ISender sender, ICacheService cacheService) =>
+        app.MapGet("categories", async (ISender sender, ICacheService cacheService) =>
         {
-            IReadOnlyCollection<CategoryResponse> categoryResponse = 
+            IReadOnlyCollection<CategoryResponse> categoryResponse =
                 await cacheService.GetAsync<IReadOnlyCollection<CategoryResponse>>("categories");
 
-            if(categoryResponse is not null)
+            if (categoryResponse is not null)
             {
                 return Results.Ok(categoryResponse);
             }

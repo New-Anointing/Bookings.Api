@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Bookings.Common.Domain;
+﻿using Bookings.Common.Domain;
 using Bookings.Common.Presentation.ApiResults;
 using Bookings.Common.Presentation.Endpoints;
 using Bookings.Modules.Events.Application.Categories.GetCategory;
@@ -13,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 
 namespace Bookings.Modules.Events.Presentation.Categories;
+
 internal sealed class GetCategory : IEndpoint
 {
     public void MapEndpoint(IEndpointRouteBuilder app)

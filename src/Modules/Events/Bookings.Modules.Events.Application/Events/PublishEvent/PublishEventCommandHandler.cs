@@ -9,7 +9,7 @@ namespace Bookings.Modules.Events.Application.Events.PublishEvent;
 internal sealed class PublishEventCommandHandler(
     IUnitOfWork unitOfWork,
     IEventRepository eventRepository,
-    ITicketTypeRepository ticketTypeRepository) 
+    ITicketTypeRepository ticketTypeRepository)
     : ICommandHandler<PublishEventCommand>
 {
     public async Task<Result> Handle(PublishEventCommand command, CancellationToken cancellationToken)
@@ -21,14 +21,14 @@ internal sealed class PublishEventCommandHandler(
             return Result.Failure(EventErrors.NotFound(command.EventId));
         }
 
-        if(!await ticketTypeRepository.ExistAsync(@event.Id, cancellationToken))
+        if (!await ticketTypeRepository.ExistAsync(@event.Id, cancellationToken))
         {
             return Result.Failure(EventErrors.NoTicketsFound);
         }
 
         Result result = @event.Publish();
 
-        if(result.IsFailure)
+        if (result.IsFailure)
         {
             return Result.Failure(result.Error);
         }

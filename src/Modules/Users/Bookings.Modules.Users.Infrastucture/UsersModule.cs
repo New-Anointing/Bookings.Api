@@ -1,18 +1,16 @@
 ﻿using Bookings.Common.Infrastructure.Interceptors;
 using Bookings.Common.Presentation.Endpoints;
-using Bookings.Modules.Users.Application;
 using Bookings.Modules.Users.Application.Abstractions.Data;
 using Bookings.Modules.Users.Domain.Users;
 using Bookings.Modules.Users.Infrastucture.Database;
-using Bookings.Modules.Users.Infrastucture.PublicApi;
 using Bookings.Modules.Users.Infrastucture.Users;
-using Bookings.Modules.Users.PublicApi;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Bookings.Modules.Users.Infrastucture;
+
 public static class UsersModule
 {
     public static IServiceCollection AddUsersModule(this IServiceCollection services, IConfiguration confiruration)
@@ -39,6 +37,5 @@ public static class UsersModule
         services.AddScoped<IUnitOfWork>(sp => sp.GetRequiredService<UsersDbContext>());
 
         services.AddScoped<IUserRepository, UserRepository>();
-        services.AddScoped<IUsersApi, UsersApi>();
     }
 }

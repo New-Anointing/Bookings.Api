@@ -1,5 +1,6 @@
 ﻿
 namespace Bookings.Modules.Users.Domain.Users;
+
 public interface IUserRepository
 {
     Task<User?> GetAsync(Guid id, CancellationToken cancellationToken = default);

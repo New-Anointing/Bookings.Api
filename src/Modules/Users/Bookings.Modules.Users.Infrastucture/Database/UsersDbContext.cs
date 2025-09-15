@@ -4,6 +4,7 @@ using Bookings.Modules.Users.Infrastucture.Users;
 using Microsoft.EntityFrameworkCore;
 
 namespace Bookings.Modules.Users.Infrastucture.Database;
+
 public sealed class UsersDbContext(DbContextOptions<UsersDbContext> options)
     : DbContext(options), IUnitOfWork
 {

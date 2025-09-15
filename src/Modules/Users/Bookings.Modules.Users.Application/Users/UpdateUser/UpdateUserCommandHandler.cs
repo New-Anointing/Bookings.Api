@@ -13,7 +13,7 @@ internal sealed class UpdateUserCommandHandler(IUserRepository userRepository, I
     {
         User? user = await userRepository.GetAsync(command.UserId, cancellationToken);
 
-        if(user is null)
+        if (user is null)
         {
             return Result.Failure(UserErrors.NotFound(command.UserId));
         }

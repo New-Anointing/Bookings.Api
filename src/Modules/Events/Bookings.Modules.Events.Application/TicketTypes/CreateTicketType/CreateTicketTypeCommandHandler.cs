@@ -16,7 +16,7 @@ internal sealed class CreateTicketTypeCommandHandler(
     public async Task<Result<Guid>> Handle(CreateTicketTypeCommand command, CancellationToken cancellationToken)
     {
         Event? @event = await eventRepository.GetAsync(command.EventId, cancellationToken);
-        if ( @event is null)
+        if (@event is null)
         {
             return Result.Failure<Guid>(EventErrors.NotFound(command.EventId));
         }

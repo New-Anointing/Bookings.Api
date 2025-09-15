@@ -2,19 +2,18 @@
 
 public abstract class DomainEvent : IDomainEvent
 {
-    protected DomainEvent() 
+    protected DomainEvent()
     {
         Id = Guid.NewGuid();
         OccuredOnUtc = DateTime.UtcNow;
     }
 
-    protected DomainEvent(Guid id, DateTime occuredAtUtc)
+    protected DomainEvent(Guid id, DateTime occuredOnUtc)
     {
         Id = id;
-        OccuredAtUtc = occuredAtUtc;
+        OccuredOnUtc = occuredOnUtc;
     }
 
     public Guid Id { get; init; }
-    public DateTime OccuredAtUtc { get; }
     public DateTime OccuredOnUtc { get; init; }
 }

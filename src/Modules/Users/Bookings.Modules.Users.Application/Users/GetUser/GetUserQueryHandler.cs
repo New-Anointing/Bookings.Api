@@ -7,7 +7,7 @@ using Dapper;
 
 namespace Bookings.Modules.Users.Application.Users.GetUser;
 
-internal sealed class GetUserQueryHandler(IDbConnectionFactory dbConnectionFactory) 
+internal sealed class GetUserQueryHandler(IDbConnectionFactory dbConnectionFactory)
     : IQueryHandler<GetUserQuery, UserResponse>
 {
     public async Task<Result<UserResponse>> Handle(GetUserQuery query, CancellationToken cancellationToken)
@@ -27,7 +27,7 @@ internal sealed class GetUserQueryHandler(IDbConnectionFactory dbConnectionFacto
 
         UserResponse? user = await connection.QuerySingleOrDefaultAsync<UserResponse>(sql, query);
 
-        if(user is null)
+        if (user is null)
         {
             return Result.Failure<UserResponse>(UserErrors.NotFound(query.UserId));
         }

@@ -2,7 +2,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Bookings.Common.Application\Bookings.Common.Application.csproj" />
     <ProjectReference Include="..\..\Events\Bookings.Modules.Events.PublicApi\Bookings.Modules.Events.PublicApi.csproj" />
-    <ProjectReference Include="..\..\Users\Bookings.Modules.Users.PublicApi\Bookings.Modules.Users.PublicApi.csproj" />
     <ProjectReference Include="..\Bookings.Modules.Ticketing.Domain\Bookings.Modules.Ticketing.Domain.csproj" />
   </ItemGroup>
 </Project>

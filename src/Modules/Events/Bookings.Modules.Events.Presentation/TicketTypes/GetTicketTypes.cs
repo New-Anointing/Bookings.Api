@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 
 namespace Bookings.Modules.Events.Presentation.TicketTypes;
+
 internal sealed class GetTicketTypes : IEndpoint
 {
     public void MapEndpoint(IEndpointRouteBuilder app)

@@ -2,7 +2,7 @@
 
 namespace Bookings.Modules.Events.Application.Categories.ArchiveCategory;
 
-internal sealed class ArchiveCategoryCommandValidator : AbstractValidator<ArchiveCategoryCommand> 
+internal sealed class ArchiveCategoryCommandValidator : AbstractValidator<ArchiveCategoryCommand>
 {
     public ArchiveCategoryCommandValidator()
     {

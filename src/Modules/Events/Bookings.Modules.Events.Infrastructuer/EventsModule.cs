@@ -16,6 +16,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Bookings.Modules.Events.Infrastructure;
+
 public static class EventsModule
 {
 

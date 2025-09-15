@@ -3,6 +3,5 @@
     <ProjectReference Include="..\..\..\Common\Bookings.Common.Infrastructure\Bookings.Common.Infrastructure.csproj" />
     <ProjectReference Include="..\Bookings.Modules.Users.Application\Bookings.Modules.Users.Application.csproj" />
     <ProjectReference Include="..\Bookings.Modules.Users.Presentation\Bookings.Modules.Users.Presentation.csproj" />
-    <ProjectReference Include="..\Bookings.Modules.Users.PublicApi\Bookings.Modules.Users.PublicApi.csproj" />
   </ItemGroup>
 </Project>

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 
 namespace Bookings.Modules.Events.Presentation.Categories;
+
 internal sealed class UpdateCategory : IEndpoint
 {
     public void MapEndpoint(IEndpointRouteBuilder app)

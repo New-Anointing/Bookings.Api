@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace Bookings.Common.Presentation.Endpoints;
+
 public static class EndpointExtensions
 {
     public static IServiceCollection AddEndPoints(this IServiceCollection services, params Assembly[] assemblies)

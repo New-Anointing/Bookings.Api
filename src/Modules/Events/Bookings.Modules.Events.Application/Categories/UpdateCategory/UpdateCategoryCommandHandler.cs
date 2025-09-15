@@ -4,6 +4,7 @@ using Bookings.Modules.Events.Application.Abstractions.Data;
 using Bookings.Modules.Events.Domain.Categories;
 
 namespace Bookings.Modules.Events.Application.Categories.UpdateCategory;
+
 internal sealed class UpdateCategoryCommandHandler(ICategoryRepository categoryRepository, IUnitOfWork unitOfWork) : ICommandHandler<UpdateCategoryCommand>
 {
     public async Task<Result> Handle(UpdateCategoryCommand command, CancellationToken cancellationToken)

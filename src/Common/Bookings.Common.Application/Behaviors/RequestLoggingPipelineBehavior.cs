@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 using Serilog.Context;
 
 namespace Bookings.Common.Application.Behaviors;
+
 internal sealed class RequestLoggingPipelineBehavior<TRequest, TResponse>(
     ILogger<RequestLoggingPipelineBehavior<TRequest, TResponse>> logger)
     : IPipelineBehavior<TRequest, TResponse>

@@ -1,6 +1,7 @@
 ﻿using Bookings.Common.Domain;
 
 namespace Bookings.Modules.Users.Domain.Users;
+
 public static class UserErrors
 {
     public static Error NotFound(Guid userId) =>

@@ -1,6 +1,15 @@
 ﻿
+using Bookings.Common.Infrastructure.Interceptors;
 using Bookings.Common.Presentation.Endpoints;
+using Bookings.Modules.Ticketing.Application.Abstractions.Data;
 using Bookings.Modules.Ticketing.Application.Carts;
+using Bookings.Modules.Ticketing.Domain.Customers;
+using Bookings.Modules.Ticketing.Infrastructure.Customers;
+using Bookings.Modules.Ticketing.Infrastructure.DataBase;
+using Bookings.Modules.Ticketing.Presentation.Customers;
+using MassTransit;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -17,10 +26,28 @@ public static class TicketingModule
         return services;
     }
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Remove unused parameter", Justification = "<Pending>")]
+    public static void ConfigureConsumers(IRegistrationConfigurator registrationConfigurator)
+    {
+        registrationConfigurator.AddConsumer<UserRegisteredIntegrationEventConsumer>();
+    }
+
     private static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
+        string databaseConnectionString = configuration.GetConnectionString("Database");
         //Add infrastructure services
+        services.AddDbContext<TicketingDbContext>((sp, options) =>
+        {
+            options.UseNpgsql(databaseConnectionString, npgSqlOptions =>
+            {
+                npgSqlOptions.MigrationsHistoryTable(HistoryRepository.DefaultTableName, Schema.Ticketing);
+            });
+            options.UseSnakeCaseNamingConvention();
+            options.AddInterceptors(sp.GetRequiredService<PublishDomainEventsInterceptor>());
+        });
+
+        services.AddScoped<IUnitOfWork>(sp => sp.GetRequiredService<TicketingDbContext>());
+        services.AddScoped<ICustomerRepository, CustomerRepository>();
+
         services.AddSingleton<CartService>();
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Bookings.Common.Domain;
 
 namespace Bookings.Modules.Events.Domain.Events;
+
 public static class EventErrors
 {
     public static Error NotFound(Guid eventId) =>

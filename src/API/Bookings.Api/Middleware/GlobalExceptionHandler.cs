@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 
 namespace Bookings.Api.Middleware;
+
 internal sealed class GlobalExceptionHandler(ILogger<GlobalExceptionHandler> logger)
     : IExceptionHandler
 {

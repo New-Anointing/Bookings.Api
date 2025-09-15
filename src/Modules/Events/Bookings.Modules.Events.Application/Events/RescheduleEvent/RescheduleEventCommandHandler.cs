@@ -3,21 +3,20 @@ using Bookings.Common.Application.Messaging;
 using Bookings.Common.Domain;
 using Bookings.Modules.Events.Application.Abstractions.Data;
 using Bookings.Modules.Events.Domain.Events;
-using MediatR;
 
 namespace Bookings.Modules.Events.Application.Events.RescheduleEvent;
 
 internal sealed class RescheduleEventCommandHandler(
     IUnitOfWork unitOfWork,
     IEventRepository eventRepository,
-    IDateTimeProvider dateTimeProvider) 
+    IDateTimeProvider dateTimeProvider)
     : ICommandHandler<RescheduleEventCommand>
 {
     public async Task<Result> Handle(RescheduleEventCommand command, CancellationToken cancellationToken)
     {
         Event? @event = await eventRepository.GetAsync(command.EventId, cancellationToken);
 
-        if(@event is null)
+        if (@event is null)
         {
             return Result.Failure(EventErrors.NotFound(command.EventId));
         }

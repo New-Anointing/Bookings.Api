@@ -1,5 +1,4 @@
-﻿using System.Data;
-using System.Data.Common;
+﻿using System.Data.Common;
 using Bookings.Common.Application.Data;
 using Bookings.Common.Application.Messaging;
 using Bookings.Common.Domain;

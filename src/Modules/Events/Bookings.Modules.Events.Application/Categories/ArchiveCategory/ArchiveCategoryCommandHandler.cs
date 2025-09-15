@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Bookings.Common.Application.Messaging;
+﻿using Bookings.Common.Application.Messaging;
 using Bookings.Common.Domain;
 using Bookings.Modules.Events.Application.Abstractions.Data;
 using Bookings.Modules.Events.Domain.Categories;
 
 namespace Bookings.Modules.Events.Application.Categories.ArchiveCategory;
+
 internal sealed class ArchiveCategoryCommandHandler(ICategoryRepository categoryRepository, IUnitOfWork unitOfWork) : ICommandHandler<ArchiveCategoryCommand>
 {
     public async Task<Result> Handle(ArchiveCategoryCommand command, CancellationToken cancellationToken)

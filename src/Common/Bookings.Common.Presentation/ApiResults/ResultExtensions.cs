@@ -1,6 +1,7 @@
 ﻿using Bookings.Common.Domain;
 
 namespace Bookings.Common.Presentation.ApiResults;
+
 public static class ResultExtensions
 {
     public static TOut Match<TOut>(

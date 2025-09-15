@@ -5,7 +5,8 @@ namespace Bookings.Modules.Events.Domain.Events;
 
 public sealed class Event : Entity
 {
-    private Event() { 
+    private Event()
+    {
     }
 
     public Guid Id { get; private set; }
@@ -32,7 +33,7 @@ public sealed class Event : Entity
         DateTime startsAtUtc,
         DateTime? endsAtUtc)
     {
-        if(endsAtUtc.HasValue && endsAtUtc < startsAtUtc)
+        if (endsAtUtc.HasValue && endsAtUtc < startsAtUtc)
         {
             return Result.Failure<Event>(EventErrors.EndDatePrecedesStartDate);
         }
@@ -55,7 +56,7 @@ public sealed class Event : Entity
 
     public Result Publish()
     {
-        if(Status != EventStatus.Draft)
+        if (Status != EventStatus.Draft)
         {
             return Result.Failure(EventErrors.NotDraft);
         }

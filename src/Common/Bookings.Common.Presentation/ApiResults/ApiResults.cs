@@ -2,11 +2,12 @@
 using Microsoft.AspNetCore.Http;
 
 namespace Bookings.Common.Presentation.ApiResults;
+
 public static class ApiResults
 {
     public static IResult Problem(Result result)
     {
-        if(result.IsSuccess)
+        if (result.IsSuccess)
         {
             throw new InvalidOperationException();
         }

@@ -4,6 +4,7 @@ using Bookings.Common.Application.Caching;
 using Microsoft.Extensions.Caching.Distributed;
 
 namespace Bookings.Common.Infrastructure.Caching;
+
 internal sealed class CacheService(IDistributedCache cache) : ICacheService
 {
     public async Task<T?> GetAsync<T>(string cacheKey, CancellationToken cancellationToken = default)

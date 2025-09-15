@@ -32,7 +32,7 @@ public sealed class User : Entity
 
     public void Update(string firstName, string lastName)
     {
-        if(FirstName == firstName && LastName == lastName)
+        if (FirstName == firstName && LastName == lastName)
         {
             return;
         }

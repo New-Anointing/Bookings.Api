@@ -13,7 +13,8 @@ internal sealed class AddToCart : IEndpoint
 {
     public void MapEndpoint(IEndpointRouteBuilder app)
     {
-        app.MapPost("cart/add", async(Request request, ISender sender) =>{
+        app.MapPost("cart/add", async (Request request, ISender sender) =>
+        {
             Result result = await sender.Send(new AddItemToCartCommand(request.CustomerId, request.TicketTypeId, request.Quantity));
 
             return result.Match(() => Results.Ok(), ApiResults.Problem);

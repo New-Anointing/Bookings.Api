@@ -13,8 +13,8 @@ public static class ApplicationConfiguration
         {
             options.RegisterServicesFromAssemblies(modeuleAssemblies);
             options.AddOpenBehavior(typeof(ExceptionHandlingPipelineBehavior<,>));
-            options.AddOpenBehavior(typeof(RequestLoggingPipelineBehavior<,>)); 
-            options.AddOpenBehavior(typeof(ValidationPipelineBehavior<,>)); 
+            options.AddOpenBehavior(typeof(RequestLoggingPipelineBehavior<,>));
+            options.AddOpenBehavior(typeof(ValidationPipelineBehavior<,>));
         });
 
         services.AddValidatorsFromAssemblies(modeuleAssemblies, includeInternalTypes: true);

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 
 namespace Bookings.Modules.Users.Presentation.Users;
+
 internal sealed class RegisterUser : IEndpoint
 {
     public void MapEndpoint(IEndpointRouteBuilder app)

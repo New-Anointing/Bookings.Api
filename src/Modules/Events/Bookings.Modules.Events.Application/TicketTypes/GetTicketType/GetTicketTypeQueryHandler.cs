@@ -8,7 +8,7 @@ using Dapper;
 namespace Bookings.Modules.Events.Application.TicketTypes.GetTicketType;
 
 internal sealed class GetTicketTypeQueryHandler
-    (IDbConnectionFactory dbConnectionFactory) 
+    (IDbConnectionFactory dbConnectionFactory)
     : IQueryHandler<GetTicketTypeQuery, TicketTypeResponse>
 {
     public async Task<Result<TicketTypeResponse>> Handle(GetTicketTypeQuery query, CancellationToken cancellationToken)

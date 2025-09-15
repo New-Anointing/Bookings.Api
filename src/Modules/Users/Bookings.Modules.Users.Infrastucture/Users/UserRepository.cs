@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using Bookings.Modules.Users.Domain.Users;
+﻿using Bookings.Modules.Users.Domain.Users;
 using Bookings.Modules.Users.Infrastucture.Database;
 using Microsoft.EntityFrameworkCore;
 

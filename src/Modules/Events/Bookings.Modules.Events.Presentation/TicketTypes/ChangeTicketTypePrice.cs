@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 
 namespace Bookings.Modules.Events.Presentation.TicketTypes;
+
 internal sealed class ChangeTicketTypePrice : IEndpoint
 {
     public void MapEndpoint(IEndpointRouteBuilder app)
@@ -15,7 +16,7 @@ internal sealed class ChangeTicketTypePrice : IEndpoint
         app.MapPut("ticket-types/{id}/price", async (Guid id, Request request, ISender sender) =>
         {
             Result result = await sender.Send(new UpdateTicketTypePriceCommand(id, request.Price));
-            
+
             return result.Match(Results.NoContent, ApiResults.Problem);
         })
         .WithTags(Tags.TicketTypes);

@@ -1,5 +1,6 @@
 ﻿
 namespace Bookings.Modules.Events.Application.Events.GetEvents;
+
 public sealed record EventResponse(
     Guid Id,
     Guid CategoryId,

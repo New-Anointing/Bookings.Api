@@ -4,7 +4,6 @@ using Bookings.Common.Application.Messaging;
 using Bookings.Common.Domain;
 using Bookings.Modules.Events.Domain.Events;
 using Dapper;
-using MediatR;
 
 namespace Bookings.Modules.Events.Application.Events.GetEvent;
 

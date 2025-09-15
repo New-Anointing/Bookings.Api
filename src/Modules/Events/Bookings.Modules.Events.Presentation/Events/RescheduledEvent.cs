@@ -8,9 +8,10 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 
 namespace Bookings.Modules.Events.Presentation.Events;
+
 internal sealed class RescheduledEvent : IEndpoint
 {
-    public void MapEndpoint (IEndpointRouteBuilder app)
+    public void MapEndpoint(IEndpointRouteBuilder app)
     {
         app.MapPut("events/{id}/reschedule", async (Guid id, Request request, ISender sender) =>
         {

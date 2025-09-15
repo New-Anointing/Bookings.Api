@@ -1,9 +1,10 @@
 ﻿using Bookings.Common.Domain;
 
 namespace Bookings.Modules.Events.Domain.Categories;
+
 public sealed class Category : Entity
 {
-    private Category() 
+    private Category()
     {
     }
 
@@ -11,7 +12,7 @@ public sealed class Category : Entity
     public string Name { get; private set; }
     public bool IsArchived { get; private set; }
 
-    public static Category Create(string Name) 
+    public static Category Create(string Name)
     {
         var category = new Category
         {
@@ -23,7 +24,7 @@ public sealed class Category : Entity
         return category;
     }
 
-    public void Archive ()
+    public void Archive()
     {
         IsArchived = true;
         Raise(new CategoryArchivedDomainEvent(Id));

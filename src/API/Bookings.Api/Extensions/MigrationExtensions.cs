@@ -1,4 +1,5 @@
 ﻿using Bookings.Modules.Events.Infrastructure.Database;
+using Bookings.Modules.Ticketing.Infrastructure.DataBase;
 using Bookings.Modules.Users.Infrastucture.Database;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,6 +13,7 @@ internal static class MigrationExtensions
 
         ApplyMigration<EventsDbContext>(scope);
         ApplyMigration<UsersDbContext>(scope);
+        ApplyMigration<TicketingDbContext>(scope);
     }
 
     private static void ApplyMigration<TDbContext>(IServiceScope scope)

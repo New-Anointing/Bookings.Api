@@ -2,10 +2,11 @@
 using Bookings.Modules.Events.Domain.Events;
 
 namespace Bookings.Modules.Events.Domain.TicketTypes;
+
 public sealed class TicketType : Entity
 {
     private TicketType()
-    {  
+    {
     }
     public Guid Id { get; private set; }
 
@@ -51,7 +52,7 @@ public sealed class TicketType : Entity
 
         Price = price;
 
-        Raise(new TicketTypePriceChangeDomainEvent(Id,  price));
+        Raise(new TicketTypePriceChangeDomainEvent(Id, price));
 
     }
 

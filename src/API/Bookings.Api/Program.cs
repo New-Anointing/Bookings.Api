@@ -33,7 +33,7 @@ Assembly[] Assemblies = [Bookings.Modules.Events.Application.AssemblyRefrence.As
 
 builder.Services.AddApplication(Assemblies);
 
-builder.Services.AddInfrastructure(dataBaseConnectionString, redisCacheConnectionString);
+builder.Services.AddInfrastructure(dataBaseConnectionString, [TicketingModule.ConfigureConsumers], redisCacheConnectionString);
 
 builder.Configuration.AddModuleConfiguration(["events", "users"]);
 
@@ -53,7 +53,7 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
     app.ApplyMigrations();
-    app.UseSwaggerUI(swaggerOptions=> swaggerOptions.SwaggerEndpoint("/openapi/v1.json", "Bookings_v1"));
+    app.UseSwaggerUI(swaggerOptions => swaggerOptions.SwaggerEndpoint("/openapi/v1.json", "Bookings_v1"));
     app.MapGet("/", () => "Bookings API is running!");
 }
 

@@ -6,6 +6,7 @@ using FluentValidation.Results;
 using MediatR;
 
 namespace Bookings.Common.Application.Behaviors;
+
 internal sealed class ValidationPipelineBehavior<TRequest, TResponse>(
     IEnumerable<IValidator<TRequest>> validators)
     : IPipelineBehavior<TRequest, TResponse>

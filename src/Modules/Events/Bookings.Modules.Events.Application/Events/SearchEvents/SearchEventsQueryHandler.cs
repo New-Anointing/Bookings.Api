@@ -32,7 +32,7 @@ internal sealed class SearchEventsQueryHandler(IDbConnectionFactory dbConnection
         return new SearchEventsResponse(query.Page, query.PageSize, totalCount, events);
     }
 
-    private async Task<IReadOnlyCollection<EventResponse>> 
+    private async Task<IReadOnlyCollection<EventResponse>>
         GetEventsAsync(DbConnection connection, SearchEventsParameters parameters)
     {
         const string sql =

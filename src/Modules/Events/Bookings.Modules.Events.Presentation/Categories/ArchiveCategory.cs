@@ -8,9 +8,10 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 
 namespace Bookings.Modules.Events.Presentation.Categories;
+
 internal sealed class ArchiveCategory : IEndpoint
 {
-    public void MapEndpoint (IEndpointRouteBuilder app)
+    public void MapEndpoint(IEndpointRouteBuilder app)
     {
         app.MapPut("categories/{id}/archive", async (Guid id, ISender sender) =>
         {

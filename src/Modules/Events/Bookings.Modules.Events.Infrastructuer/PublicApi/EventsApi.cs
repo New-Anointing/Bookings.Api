@@ -10,11 +10,11 @@ internal sealed class EventsApi(ISender sender) : IEventsApi
 {
     public async Task<TicketTypeResponse?> GetTicketTypeAsync(Guid ticketTypeId, CancellationToken cancellationToken = default)
     {
-        Result<Application.TicketTypes.GetTicketType.TicketTypeResponse> result = 
+        Result<Application.TicketTypes.GetTicketType.TicketTypeResponse> result =
             await sender.Send(new GetTicketTypeQuery(ticketTypeId), cancellationToken);
 
         if (result == null)
-        { 
+        {
             return null;
         }
 

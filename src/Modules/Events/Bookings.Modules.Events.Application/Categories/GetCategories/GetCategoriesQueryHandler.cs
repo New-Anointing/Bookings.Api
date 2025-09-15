@@ -6,6 +6,7 @@ using Bookings.Modules.Events.Application.Categories.GetCategory;
 using Dapper;
 
 namespace Bookings.Modules.Events.Application.Categories.GetCategories;
+
 internal sealed class GetCategoriesQueryHandler(IDbConnectionFactory dbConnectionFactory)
     : IQueryHandler<GetCategoriesQuery, IReadOnlyCollection<CategoryResponse>>
 {

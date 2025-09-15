@@ -9,14 +9,14 @@ namespace Bookings.Modules.Events.Application.Events.CancelEvent;
 internal sealed class CancelEventCommandHandler
     (IEventRepository eventRepository,
     IUnitOfWork unitOfWork,
-    IDateTimeProvider dateTimeProvider) 
+    IDateTimeProvider dateTimeProvider)
     : ICommandHandler<CancelEventCommand>
 {
     public async Task<Result> Handle(CancelEventCommand command, CancellationToken cancellationToken)
     {
         Event? @event = await eventRepository.GetAsync(command.EventId, cancellationToken);
 
-        if(@event is null)
+        if (@event is null)
         {
             return Result.Failure(EventErrors.NotFound(command.EventId));
         }

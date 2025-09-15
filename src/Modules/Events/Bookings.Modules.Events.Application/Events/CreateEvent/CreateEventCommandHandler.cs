@@ -12,7 +12,7 @@ internal sealed class CreateEventCommandHandler
     (IEventRepository eventRepository,
     ICategoryRepository categoryRepository,
     IDateTimeProvider dateTimeProvider,
-    IUnitOfWork unitOfWork) : 
+    IUnitOfWork unitOfWork) :
     ICommandHandler<CreateEventCommand, Guid>
 {
 

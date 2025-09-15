@@ -1,5 +1,6 @@
 ﻿
 namespace Bookings.Modules.Events.Domain.Events;
+
 public interface IEventRepository
 {
     Task<Event?> GetAsync(Guid id, CancellationToken cancellationToken);

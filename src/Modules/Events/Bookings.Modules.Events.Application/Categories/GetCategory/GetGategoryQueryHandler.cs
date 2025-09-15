@@ -6,7 +6,8 @@ using Bookings.Modules.Events.Domain.Categories;
 using Dapper;
 
 namespace Bookings.Modules.Events.Application.Categories.GetCategory;
-internal sealed class GetGategoryQueryHandler(IDbConnectionFactory dbConnectionFactory) 
+
+internal sealed class GetGategoryQueryHandler(IDbConnectionFactory dbConnectionFactory)
     : IQueryHandler<GetCategoryQuery, CategoryResponse>
 {
     public async Task<Result<CategoryResponse>> Handle(GetCategoryQuery query, CancellationToken cancellationToken)
@@ -25,7 +26,7 @@ internal sealed class GetGategoryQueryHandler(IDbConnectionFactory dbConnectionF
 
         CategoryResponse? category = await connection.QuerySingleOrDefaultAsync<CategoryResponse?>(sql, query);
 
-        if(category is null)
+        if (category is null)
         {
             return Result.Failure<CategoryResponse>(CategoryErrors.NotFound(query.CategoryId));
         }

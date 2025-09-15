@@ -4,6 +4,7 @@ using Bookings.Modules.Events.Infrastructure.Database;
 using Microsoft.EntityFrameworkCore;
 
 namespace Bookings.Modules.Events.Infrastructure.Categories;
+
 public class CategoryRepository(EventsDbContext context) : ICategoryRepository
 {
     public async Task<Category?> GetAsync(Guid id, CancellationToken cancellationToken = default)

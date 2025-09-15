@@ -2,5 +2,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Bookings.Common.Application\Bookings.Common.Application.csproj" />
     <ProjectReference Include="..\Bookings.Modules.Users.Domain\Bookings.Modules.Users.Domain.csproj" />
+    <ProjectReference Include="..\Bookings.Modules.Users.IntegrationEvents\Bookings.Modules.Users.IntegrationEvents.csproj" />
   </ItemGroup>
 </Project>
