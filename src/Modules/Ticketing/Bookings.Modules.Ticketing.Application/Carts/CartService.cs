@@ -45,15 +45,15 @@ public sealed class CartService(ICacheService cacheService)
         await cacheService.SetAsync(cacheKey, cart, DefaultExpiration, cancellationToken);
     }
 
-    public async Task RemoveItemAsync(Guid customerId, CartItem cartItem, CancellationToken cancellationToken)
+    public async Task RemoveItemAsync(Guid customerId, Guid ticketTypeId, CancellationToken cancellationToken)
     {
         string cacheKey = CreateCacheKey(customerId);
 
         Cart cart = await GetAsync(customerId, cancellationToken);
 
-        CartItem? existingCartItem = cart.Items.Find(c => c.TicketTypeId == cartItem.TicketTypeId);
+        CartItem? cartItem = cart.Items.Find(c => c.TicketTypeId == ticketTypeId);
 
-        if (existingCartItem is null)
+        if (cartItem is null)
         {
             return;
         }

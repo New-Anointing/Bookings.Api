@@ -1,25 +1,14 @@
 ﻿using Bookings.Common.Application.Messaging;
 using Bookings.Common.Domain;
-using Bookings.Modules.Events.PublicApi;
 using Bookings.Modules.Ticketing.Domain.Customers;
 using Bookings.Modules.Ticketing.Domain.Events;
-using FluentValidation;
 
 namespace Bookings.Modules.Ticketing.Application.Carts.AddItemToCart;
 
-public sealed record AddItemToCartCommand(Guid CustomerId, Guid TicketTypeId, decimal Quantity) : ICommand;
-
-internal sealed class AddItemToCartCommandValidator : AbstractValidator<AddItemToCartCommand>
-{
-    public AddItemToCartCommandValidator()
-    {
-        RuleFor(c => c.CustomerId).NotEmpty();
-        RuleFor(c => c.TicketTypeId).NotEmpty();
-        RuleFor(c => c.Quantity).GreaterThan(decimal.Zero);
-    }
-}
-
-internal sealed class AddItemToCartCommandHandler(CartService cartService, ICustomerRepository customerRepository, IEventsApi eventsApi)
+internal sealed class AddItemToCartCommandHandler
+    (CartService cartService,
+    ICustomerRepository customerRepository,
+   ITicketTypeRepository ticketTypeRepository)
     : ICommandHandler<AddItemToCartCommand>
 {
     public async Task<Result> Handle(AddItemToCartCommand command, CancellationToken cancellationToken)
@@ -34,12 +23,18 @@ internal sealed class AddItemToCartCommandHandler(CartService cartService, ICust
         }
 
         //2. Get Ticket Type
-        TicketTypeResponse? ticketType = await eventsApi.GetTicketTypeAsync(command.TicketTypeId, cancellationToken);
+        TicketType? ticketType = await ticketTypeRepository.GetAsync(command.TicketTypeId, cancellationToken);
 
         if (ticketType is null)
         {
             return Result.Failure(TicketTypeErrors.NotFound(command.TicketTypeId));
         }
+
+        if (ticketType.AvailableQuantity < command.Quantity)
+        {
+            return Result.Failure(TicketTypeErrors.NotEnoughQuantity(ticketType.AvailableQuantity));
+        }
+
 
         var cartItem = new CartItem()
         {

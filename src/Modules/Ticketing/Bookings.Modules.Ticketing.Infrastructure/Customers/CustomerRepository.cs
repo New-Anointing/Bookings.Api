@@ -9,10 +9,6 @@ internal sealed class CustomerRepository(TicketingDbContext context) : ICustomer
     public async Task<Customer?> GetAsync(Guid customerId, CancellationToken cancellationToken = default)
     {
         Customer? customer = await context.Customers.Where(c => c.Id == customerId).SingleOrDefaultAsync(cancellationToken);
-        if (customer is null)
-        {
-            return null;
-        }
         return customer;
     }
 
