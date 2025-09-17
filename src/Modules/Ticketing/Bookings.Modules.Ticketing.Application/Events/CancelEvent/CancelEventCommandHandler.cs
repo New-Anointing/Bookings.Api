@@ -5,7 +5,7 @@ using Bookings.Modules.Ticketing.Domain.Events;
 
 namespace Bookings.Modules.Ticketing.Application.Events.CancelEvent;
 
-internal class CancelEventCommandHandler(IEventRepository eventRepository, IUnitOfWork unitOfWork) : ICommandHandler<CancelEventCommand>
+internal sealed class CancelEventCommandHandler(IEventRepository eventRepository, IUnitOfWork unitOfWork) : ICommandHandler<CancelEventCommand>
 {
     public async Task<Result> Handle(CancelEventCommand command, CancellationToken cancellationToken)
     {

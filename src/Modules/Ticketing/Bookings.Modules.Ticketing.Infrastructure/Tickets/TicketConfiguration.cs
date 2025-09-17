@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Bookings.Modules.Ticketing.Infrastructure.Tickets;
 
-internal class TicketConfiguration : IEntityTypeConfiguration<Ticket>
+internal sealed class TicketConfiguration : IEntityTypeConfiguration<Ticket>
 {
     public void Configure(EntityTypeBuilder<Ticket> builder)
     {
