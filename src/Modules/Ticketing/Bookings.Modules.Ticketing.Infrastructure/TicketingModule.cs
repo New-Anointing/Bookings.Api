@@ -1,5 +1,4 @@
-﻿
-using Bookings.Common.Infrastructure.Interceptors;
+﻿using Bookings.Common.Infrastructure.Interceptors;
 using Bookings.Common.Presentation.Endpoints;
 using Bookings.Modules.Ticketing.Application.Abstractions.Data;
 using Bookings.Modules.Ticketing.Application.Abstractions.Payments;
@@ -61,6 +60,7 @@ public static class TicketingModule
         services.AddScoped<IPaymentRepository, PaymentRepository>();
         services.AddScoped<IPaymentService, PaymentService>();
         services.AddScoped<ITicketRepository, TicketRepository>();
+        services.AddScoped<ITicketTypeRepository, TicketTypeRepository>();
 
         services.AddSingleton<CartService>();
     }
