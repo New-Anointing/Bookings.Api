@@ -39,7 +39,8 @@ builder.Configuration.AddModuleConfiguration(["events", "users"]);
 
 builder.Services.AddHealthChecks()
     .AddNpgSql(dataBaseConnectionString)
-    .AddRedis(redisCacheConnectionString);
+    .AddRedis(redisCacheConnectionString)
+    .AddUrlGroup(new Uri(builder.Configuration.GetValue<string>("KeyCloak:HealthUrl")!), HttpMethod.Get, "Keycloak");
 
 builder.Services.AddEventsModule(builder.Configuration);
 builder.Services.AddUsersModule(builder.Configuration);
@@ -66,5 +67,9 @@ app.MapHealthChecks("health", new HealthCheckOptions
     ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
 });
 app.UseExceptionHandler();
+
+app.UseAuthentication();
+
+app.UseAuthorization();
 
 await app.RunAsync();

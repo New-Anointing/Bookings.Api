@@ -24,6 +24,21 @@ services:
     ports:
       - 5432:5432
 
+  bookings.identity:
+    image: quay.io/keycloak/keycloak:latest
+    container_name: Bookings.Identity
+    command: start-dev #--import-realm
+    environment:
+      - KC_HEALTH_ENABLED=true
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+    volumes:
+      - ./.containers/identity:/opt/keycloak/data
+      - ./.files:/opt/keycloak/data/import
+    ports:
+      - 18080:8080
+      - "19090:9000"
+
   bookings.seq:
     image: datalust/seq:latest
     container_name: Bookings.Seq

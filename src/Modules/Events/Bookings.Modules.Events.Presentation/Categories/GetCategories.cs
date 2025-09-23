@@ -17,23 +17,11 @@ internal sealed class GetCategories : IEndpoint
     {
         app.MapGet("categories", async (ISender sender, ICacheService cacheService) =>
         {
-            IReadOnlyCollection<CategoryResponse> categoryResponse =
-                await cacheService.GetAsync<IReadOnlyCollection<CategoryResponse>>("categories");
-
-            if (categoryResponse is not null)
-            {
-                return Results.Ok(categoryResponse);
-            }
-
             Result<IReadOnlyCollection<CategoryResponse>> result = await sender.Send(new GetCategoriesQuery());
-
-            if (result.IsSuccess)
-            {
-                await cacheService.SetAsync("categories", result.Value);
-            }
 
             return result.Match(Results.Ok, ApiResults.Problem);
         })
+        .RequireAuthorization()
         .WithTags(Tags.Categories);
     }
 }

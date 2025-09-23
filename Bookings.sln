@@ -59,8 +59,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookings.Modules.Ticketing.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookings.Modules.Ticketing.Presentation", "src\Modules\Ticketing\Bookings.Modules.Ticketing.Presentation\Bookings.Modules.Ticketing.Presentation.csproj", "{FE9E6669-0F9E-4CBE-BF42-9C11BA1405F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookings.Modules.Events.PublicApi", "src\Modules\Events\Bookings.Modules.Events.PublicApi\Bookings.Modules.Events.PublicApi.csproj", "{660186C6-26A7-4AEA-8750-512DF3EAFBE1}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookings.Modules.Users.IntegrationEvents", "src\Modules\Users\Bookings.Modules.Users.IntegrationEvents\Bookings.Modules.Users.IntegrationEvents.csproj", "{A7D5F135-916D-4A8D-A4DD-8B7A7504CE30}"
 EndProject
 Global
@@ -141,10 +139,6 @@ Global
 		{FE9E6669-0F9E-4CBE-BF42-9C11BA1405F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE9E6669-0F9E-4CBE-BF42-9C11BA1405F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE9E6669-0F9E-4CBE-BF42-9C11BA1405F1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{660186C6-26A7-4AEA-8750-512DF3EAFBE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{660186C6-26A7-4AEA-8750-512DF3EAFBE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{660186C6-26A7-4AEA-8750-512DF3EAFBE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{660186C6-26A7-4AEA-8750-512DF3EAFBE1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A7D5F135-916D-4A8D-A4DD-8B7A7504CE30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A7D5F135-916D-4A8D-A4DD-8B7A7504CE30}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7D5F135-916D-4A8D-A4DD-8B7A7504CE30}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -177,7 +171,6 @@ Global
 		{AE351583-73B9-43D1-82FE-3C8CF9904E57} = {AD6BC4BD-0AF1-42CB-8AC1-03085A78E986}
 		{B4C9AC8B-B95A-429A-8741-2BC750BFAD4C} = {AD6BC4BD-0AF1-42CB-8AC1-03085A78E986}
 		{FE9E6669-0F9E-4CBE-BF42-9C11BA1405F1} = {AD6BC4BD-0AF1-42CB-8AC1-03085A78E986}
-		{660186C6-26A7-4AEA-8750-512DF3EAFBE1} = {E647F9FF-EFC1-4C7F-8571-CCE5EF272223}
 		{A7D5F135-916D-4A8D-A4DD-8B7A7504CE30} = {DB73943F-3E59-4C41-8AEB-61A8C132A29F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution

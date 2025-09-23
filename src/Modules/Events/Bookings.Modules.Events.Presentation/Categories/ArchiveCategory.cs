@@ -19,6 +19,7 @@ internal sealed class ArchiveCategory : IEndpoint
 
             result.Match(() => Results.Ok(), ApiResults.Problem);
         })
+        .RequireAuthorization()
         .WithTags(Tags.Categories);
     }
 }
