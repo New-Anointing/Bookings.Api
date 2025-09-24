@@ -1,5 +1,11 @@
 {
   "Users": {
-
+    "KeyCloak": {
+      "AdminUrl": "http://bookings.identity:8080/admin/realms/bookings/",
+      "TokenUrl": "http://bookings.identity:8080/realms/bookings/protocol/openid-connect/token",
+      "ConfidentialClientId": "bookings-confidential-client",
+      "ConfidentialClientSecret": "qz3heduEaxkDCBtAdmwC19K4B50rnCZo",
+      "PublicClientId": "bookings-public-client"
+    }
   }
 }
