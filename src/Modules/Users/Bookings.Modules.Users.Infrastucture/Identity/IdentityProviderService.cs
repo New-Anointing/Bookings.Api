@@ -20,10 +20,9 @@ internal sealed class IdentityProviderService(KeyCloakClient keyCloakClient, ILo
             user.LastName,
             true,
             true,
-            new[]
-            {
+            [
                 new CredentialRepresentation(PasswordCredentialType, user.Password, false)
-            });
+            ]);
 
         try
         {

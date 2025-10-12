@@ -20,7 +20,7 @@ public static class InfrastructureConfiguration
     public static IServiceCollection AddInfrastructure(
         this IServiceCollection services,
         string databaseConnectionString,
-        Action<IRegistrationConfigurator>[] moduleConfugureConsumers,
+        Action<IRegistrationConfigurator>[] moduleConfigureConsumers,
         string redisConnectionString)
     {
         services.AddAuthenticationInternal();
@@ -54,7 +54,7 @@ public static class InfrastructureConfiguration
 
         services.AddMassTransit((configure) =>
         {
-            foreach (Action<IRegistrationConfigurator> configureCustomer in moduleConfugureConsumers)
+            foreach (Action<IRegistrationConfigurator> configureCustomer in moduleConfigureConsumers)
             {
                 configureCustomer(configure);
             }

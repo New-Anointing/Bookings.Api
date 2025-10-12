@@ -38,7 +38,8 @@ public static class UsersModule
                 .GetRequiredService<IOptions<KeyCloakOptions>>().Value;
 
                 httpClient.BaseAddress = new Uri(keyCloakOptions.AdminUrl);
-            });
+            })
+            .AddHttpMessageHandler<KeyCloakAuthDelegatingHandler>();
 
         services.AddTransient<IIdentityProviderService, IdentityProviderService>();
 
