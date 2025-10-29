@@ -1,8 +1,10 @@
-﻿using Bookings.Common.Infrastructure.Interceptors;
+﻿using Bookings.Common.Application.Authorization;
+using Bookings.Common.Infrastructure.Interceptors;
 using Bookings.Common.Presentation.Endpoints;
 using Bookings.Modules.Users.Application.Abstractions.Data;
 using Bookings.Modules.Users.Application.Abstractions.Identity;
 using Bookings.Modules.Users.Domain.Users;
+using Bookings.Modules.Users.Infrastucture.Authorization;
 using Bookings.Modules.Users.Infrastucture.Database;
 using Bookings.Modules.Users.Infrastucture.Identity;
 using Bookings.Modules.Users.Infrastucture.Users;
@@ -27,6 +29,7 @@ public static class UsersModule
 
     private static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
+        services.AddScoped<IPermissionService, PermissionService>();
         services.Configure<KeyCloakOptions>(configuration.GetSection("Users:KeyCloak"));
 
         services.AddTransient<KeyCloakAuthDelegatingHandler>();

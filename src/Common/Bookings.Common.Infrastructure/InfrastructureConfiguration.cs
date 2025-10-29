@@ -3,6 +3,7 @@ using Bookings.Common.Application.Clock;
 using Bookings.Common.Application.Data;
 using Bookings.Common.Application.EventBus;
 using Bookings.Common.Infrastructure.Authentication;
+using Bookings.Common.Infrastructure.Authorization;
 using Bookings.Common.Infrastructure.Caching;
 using Bookings.Common.Infrastructure.Clock;
 using Bookings.Common.Infrastructure.Data;
@@ -24,6 +25,8 @@ public static class InfrastructureConfiguration
         string redisConnectionString)
     {
         services.AddAuthenticationInternal();
+
+        services.AddAuthorizationInternal();
 
         NpgsqlDataSource npgsqlDataSource = new NpgsqlDataSourceBuilder(databaseConnectionString).Build();
 
