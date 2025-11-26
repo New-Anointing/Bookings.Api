@@ -1,6 +1,5 @@
 ﻿using Bookings.Common.Infrastructure.Interceptors;
 using Bookings.Common.Presentation.Endpoints;
-using Bookings.Modules.Ticketing.Application.Abstractions.Authentication;
 using Bookings.Modules.Ticketing.Application.Abstractions.Data;
 using Bookings.Modules.Ticketing.Application.Abstractions.Payments;
 using Bookings.Modules.Ticketing.Application.Carts;
@@ -9,7 +8,6 @@ using Bookings.Modules.Ticketing.Domain.Events;
 using Bookings.Modules.Ticketing.Domain.Orders;
 using Bookings.Modules.Ticketing.Domain.Payment;
 using Bookings.Modules.Ticketing.Domain.Tickets;
-using Bookings.Modules.Ticketing.Infrastructure.Authentication;
 using Bookings.Modules.Ticketing.Infrastructure.Customers;
 using Bookings.Modules.Ticketing.Infrastructure.DataBase;
 using Bookings.Modules.Ticketing.Infrastructure.Events;
@@ -63,7 +61,6 @@ public static class TicketingModule
         services.AddScoped<IPaymentService, PaymentService>();
         services.AddScoped<ITicketRepository, TicketRepository>();
         services.AddScoped<ITicketTypeRepository, TicketTypeRepository>();
-        services.AddScoped<ICustomerContext, CustomerContext>();
 
         services.AddSingleton<CartService>();
     }

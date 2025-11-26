@@ -20,7 +20,7 @@ internal sealed class GetTicketForOrderQuery : IEndpoint
 
             return result.Match(Results.Ok, ApiResults.Problem);
         })
-        .RequireAuthorization(Permissions.GetTickets)
+        .RequireAuthorization()
         .WithTags(Tags.Tickets);
     }
 }

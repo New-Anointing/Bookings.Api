@@ -27,7 +27,7 @@ internal sealed class CreateEvent : IEndpoint
 
             return result.Match(Results.Ok, ApiResults.Problem);
         })
-        .RequireAuthorization(Permissions.ModifyEvents)
+        .RequireAuthorization()
         .WithTags(Tags.Events);
     }
 

@@ -19,7 +19,7 @@ internal sealed class CancelEvent : IEndpoint
 
             return result.Match(Results.NoContent, ApiResults.Problem);
         })
-        .RequireAuthorization(Permissions.ModifyEvents)
+        .RequireAuthorization()
         .WithTags(Tags.Events);
     }
 }

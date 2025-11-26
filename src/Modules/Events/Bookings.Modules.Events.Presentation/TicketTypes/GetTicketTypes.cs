@@ -20,7 +20,7 @@ internal sealed class GetTicketTypes : IEndpoint
 
             return result.Match(Results.Ok, ApiResults.Problem);
         })
-        .RequireAuthorization(Permissions.GetTicketTypes)
+        .RequireAuthorization()
         .WithTags(Tags.TicketTypes);
     }
 

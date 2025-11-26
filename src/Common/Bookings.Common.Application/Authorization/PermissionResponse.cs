@@ -1,3 +1,3 @@
 ﻿namespace Bookings.Common.Application.Authorization;
 
-public sealed record PermissionResponse(Guid UserId, HashSet<string> Permissions);
+public sealed record PermissionResponse(Guid USerId, HashSet<string> Permissions);
