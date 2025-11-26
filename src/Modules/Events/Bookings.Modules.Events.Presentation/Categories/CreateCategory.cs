@@ -13,13 +13,13 @@ internal sealed class CreateCategory : IEndpoint
 {
     public void MapEndpoint(IEndpointRouteBuilder app)
     {
-        app.MapPost("catrgories", async (Request request, ISender sender) =>
+        app.MapPost("categories", async (Request request, ISender sender) =>
         {
             Result<Guid> result = await sender.Send(new CreateCategoryCommand(request.Name));
 
             return result.Match(Results.Ok, ApiResults.Problem);
         })
-        .RequireAuthorization()
+        .RequireAuthorization(Permissions.ModifyCategories)
         .WithTags(Tags.Categories);
     }
 
